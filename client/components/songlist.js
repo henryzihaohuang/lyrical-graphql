@@ -1,6 +1,7 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
+import {Link} from 'react-router-dom';
 
 const query = gql`
     {
@@ -31,7 +32,14 @@ class SongList extends React.Component {
                 <div>
                     <h1>SongList</h1>
                     <br />
-                    {this.renderSongs()}
+                    <ul className="collection">
+                        {this.renderSongs()}
+                    </ul>
+                    <Link to="/songs/new"
+                        className="btn-floating brn-large red right">
+                        
+                       <i className="material-icons">add</i>
+                    </Link>
                 </div>
             )
         }
