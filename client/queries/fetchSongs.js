@@ -5,6 +5,7 @@ const query = gql`
         songs{
             title
             id
+            
         }
     }
 `;

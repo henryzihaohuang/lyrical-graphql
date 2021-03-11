@@ -16,15 +16,15 @@ class SongList extends React.Component {
     onSongDelete(id){
         this.props.mutate({
             variables: { id: id },
-            refetchQueries: [{ query }]
-        });
+            //refetchQueries: [{ query }]
+        }).then(()=> this.props.data.refetch());
     }
 
     renderSongs(){
         return this.props.data.songs.map(({id,title}) => {
             return(
                 <li key={id} className="collection-item">
-                    {title} <i className="material-icons" onClick={(()=> this.onSongDelete(id))}>delete</i>
+                    <Link to={`/songs/${id}`}>{title}</Link> <i className="material-icons" onClick={(()=> this.onSongDelete(id))}>delete</i>
                 </li>
             )
         })
